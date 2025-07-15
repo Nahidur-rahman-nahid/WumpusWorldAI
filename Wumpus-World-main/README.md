@@ -1,5 +1,7 @@
 ﻿# Wumpus World
-<img width="356" height="58" alt="image" src="https://github.com/user-attachments/assets/17cef360-3742-47f6-a227-00b055f0acdc" />
+![alt text](image.jpg)
+
+
 
 
 Test case passed
