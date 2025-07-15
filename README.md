@@ -1,4 +1,5 @@
 ﻿# Wumpus World
+![alt text](image.jpg)
 
 
 
