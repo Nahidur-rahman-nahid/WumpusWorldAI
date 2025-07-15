@@ -1,5 +1,5 @@
 ﻿# Wumpus World
-![alt text](image.jpg)
+
 
 
 Test case passed
