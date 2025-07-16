@@ -96,6 +96,32 @@ constructor(pos, world) {
         }
     }
 
+    down() {
+        if (this.alive) {
+            numOfSteps +=1;
+            if(isManualMode) {
+                if (this.direction != 2) {
+                    this.direction = 2;
+                }
+                else if (this.position.y < this.world.roomsPerRow - 1) {
+                    this.position.y++;
+                    this.world.showRoom(this.position.x, this.position.y);
+                }
+            }
+
+            else {
+                if (this.direction != 2) {
+                    this.direction = 2;
+                }
+                if (this.position.y < this.world.roomsPerRow - 1) {
+                    this.position.y++;
+                    this.world.showRoom(this.position.x, this.position.y);
+                }
+            }
+            this.checkCurrentRoom();
+        }
+    }
+
 
                  
 
