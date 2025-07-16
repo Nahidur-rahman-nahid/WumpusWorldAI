@@ -148,6 +148,35 @@ constructor(pos, world) {
         }
     } 
 
+     checkCurrentRoom() {
+        if (this.world.getRoom(this.position.x, this.position.y).containsWumpus() && this.world.wumpus.alive) {
+            this.world.showAllRooms();
+            this.kill();
+        } else if (this.world.getRoom(this.position.x, this.position.y).containsPit()) {
+            this.world.showAllRooms();
+            this.kill();
+        } else if (this.world.getRoom(this.position.x, this.position.y).containsGold()) {
+            this.collectedGold += 1;
+            goldCollected +=1000;
+
+            this.world.getRoom(this.position.x, this.position.y).objects.forEach(obj => {
+                if (obj instanceof Gold) {
+                    setTimeout(() => {
+                        this.world.getRoom(this.position.x, this.position.y).removeAttribute("Glitter");
+                        this.world.getRoom(this.position.x, this.position.y).objects.delete(obj);
+                    }, 500);
+                }
+            });
+               this.checkWin();
+        }
+        if (this.world.getRoom(this.position.x, this.position.y).containsArrow) {
+            this.world.getRoom(this.position.x, this.position.y).removeArrow();
+            this.hasArrow = true;
+            bell_sound.play();
+        }
+    }
+
+
                  
 
 }
