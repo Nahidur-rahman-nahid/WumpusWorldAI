@@ -70,6 +70,33 @@ constructor(pos, world) {
         }
     }
 
+    right() {
+        if (this.alive) {
+            numOfSteps +=1;
+            if(isManualMode) {
+                if (this.direction != 1) {
+                    this.direction = 1;
+                }
+                else if (this.position.x < this.world.roomsPerRow - 1) {
+                    this.position.x++;
+                    this.world.showRoom(this.position.x, this.position.y);
+                }
+            }
+
+            else {
+                if (this.direction != 1) {
+                    this.direction = 1;
+                }
+                if (this.position.x < this.world.roomsPerRow - 1) {
+                    this.position.x++;
+                    this.world.showRoom(this.position.x, this.position.y);
+                }
+            }
+            this.checkCurrentRoom();
+        }
+    }
+
+
                  
 
 }
