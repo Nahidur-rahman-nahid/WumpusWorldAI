@@ -40,6 +40,10 @@ constructor(pos, world) {
         }
     }
 
-                    
+   getCurrentRoom() {
+        return this.world.getRoom(this.position.x, this.position.y);
+    }
+
+                 
 
 }
