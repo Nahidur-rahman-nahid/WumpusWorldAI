@@ -204,6 +204,32 @@ constructor(pos, world) {
         }
     }
 
+     kill() {
+        clearInterval(interval);
+        this.alive = false;
+        dead = -1000;
+        defeat_sound.play();
+        totalScore = goldCollected + (numOfSteps*(-1)) + dead + arrowUsed;
+        Swal.fire({
+            position:'center-start',
+            title: 'Lose!',
+            html: `<b>Alas! You lost! </b><hr> <b>Result</b><br> <div style="padding-top:7px">
+            Dead: ${dead} <br> 
+            Gold Collected: ${goldCollected} <br> Steps:  -${numOfSteps} <br> Arrow Used: ${arrowUsed}
+            <hr> Total Score: ${totalScore} </div>`,
+            icon: 'error',
+            confirmButtonText: 'Restart'
+          }).then((result) => {  
+            if (result.isConfirmed) {    
+                if(isFixedBoard)  
+                fixedRestart();
+                else
+                    randomRestart()
+            }
+        });
+    }
+
+      
 
                  
 
