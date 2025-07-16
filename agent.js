@@ -44,6 +44,32 @@ constructor(pos, world) {
         return this.world.getRoom(this.position.x, this.position.y);
     }
 
+      up() {
+        if (this.alive) {
+            numOfSteps +=1;
+            if(isManualMode) {
+                if (this.direction != 0) {
+                    this.direction = 0;
+                }
+                else if (this.position.y > 0) {
+                    this.position.y--;
+                    this.world.showRoom(this.position.x, this.position.y);
+                }
+            }
+
+            else {
+                if (this.direction != 0) {
+                    this.direction = 0;
+                }
+                if (this.position.y > 0) {
+                    this.position.y--;
+                    this.world.showRoom(this.position.x, this.position.y);
+                }
+            }
+            this.checkCurrentRoom();
+        }
+    }
+
                  
 
 }
