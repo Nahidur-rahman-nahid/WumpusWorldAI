@@ -14,4 +14,22 @@ constructor(pos, world) {
         // world.showRoom(pos.x + 1, pos.y);
         // world.showRoom(pos.x, pos.y + 1);
     }
+
+            display() {
+        let img;
+        switch (this.direction) {
+            case 0:
+                img = agent_up_image;
+                break;
+           case 1:
+                img = agent_right_image;
+                break;
+           case 2:
+                img = agent_down_image;
+                break;
+           case 3:
+                img = agent_left_image;
+                break;
+        }
+
 }
