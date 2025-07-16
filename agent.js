@@ -176,6 +176,34 @@ constructor(pos, world) {
         }
     }
 
+      checkWin() {
+        if(this.collectedGold == this.world.totalGold) {
+            clearInterval(interval);
+            setTimeout(() => {
+                console.log("Victory!");
+                victory_sound.play();
+                this.world.showAllRooms();
+                totalScore = goldCollected + (numOfSteps*(-1)) + dead + arrowUsed;
+                Swal.fire({
+                    position:'center-start',
+                    title: 'Win!',
+                    html: `<b>Congratulations! You Won! </b><hr> <b>Result</b><br> <div style="padding-top:7px">
+                    Gold Collected: ${goldCollected} <br> Steps:  -${numOfSteps} <br> Arrow Used: ${arrowUsed}
+                    <hr> Total Score: ${totalScore} </div>`,
+                    icon: 'success',
+                    confirmButtonText: 'Restart'
+                  }).then((result) => {  
+                    if (result.isConfirmed) {  
+                        if(isFixedBoard)  
+                            fixedRestart();
+                        else
+                            randomRestart()
+                    }
+                });
+            }, 1000);
+        }
+    }
+
 
                  
 
