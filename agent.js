@@ -229,8 +229,61 @@ constructor(pos, world) {
         });
     }
 
-      
+      shoot() {
+        if (!this.hasArrow || !this.alive) {
+            return;
+        }
+        arrowUsed = -10;
+        var victory = false;
+        switch (this.direction){
+            case 0:
+                var x = this.position.x;
+                for (var y = this.position.y; y >= 0; y--) {
+                    if (this.world.getRoom(x, y).containsWumpus()) {
+                        victory = true;
+                        break;
+                    }
+                }
+                break;
+            case 1:
+                var y = this.position.y;
+                for (var x = this.position.x; x < roomsPerRow; x++) {
+                    if (this.world.getRoom(x, y).containsWumpus()) {
+                        victory = true;
+                        break;
+                    }
+                }
+                break;
+            case 2:
+                var x = this.position.x;
+                for (var y = this.position.y; y < roomsPerRow; y++) {
+                    if (this.world.getRoom(x, y).containsWumpus()) {
+                        victory = true;
+                        break;
+                    }
+                }
+                break;
+            case 3:
+                var y = this.position.y;
+                for (var x = this.position.x; x >= 0; x--) {
+                    if (this.world.getRoom(x, y).containsWumpus()) {
+                        victory = true;
+                        break;
+                    }
+                }
+                break;
+        }
+        if (victory) {
+            this.world.showRoom(this.world.wumpus.position.x, this.world.wumpus.position.y);
+            this.world.wumpus.kill();
+            if (worldAutoIncrement) {
+                setWorldSize(parseInt(roomsPerRow) + 1);
+            }
+        } else {
 
-                 
+        }
+
+        this.hasArrow = false;
+    }
 
 }
